@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Leaflet Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="map.css">
+</head>
+
+<body>
+
+    <h1>My Leaflet Map</h1>
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        fetch('data.json')
+            .then(response => response.json()) // Read it as text
+            .then(data => {
+                // Loop through each organization in the array
+                data.forEach(shelter => {
+                    var lat = shelter.lat;
+                    var lon = shelter.lon;
+                    var marker = L.marker([lat, lon]).addTo(map);
+                });
+                    
+            
+            })
+            .catch(error => console.error('Error fetching the CSV file:', error));
+        // Initialize the map
+        var map = L.map('map').setView([39.952583, -75.165222], 13); // Set initial position and zoom level
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Add a marker
+        var marker = L.marker([39.952583, -75.165222]).addTo(map);
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    </script>
+</body>
+
+</html>
