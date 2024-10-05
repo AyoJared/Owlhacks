@@ -8,10 +8,37 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="map.css">
+    <title>Button Example</title>
+    <style>
+        .myButton {
+            background-color: #ffc477;
+            border-radius: 28px;
+            border: 1px solid #eeb44f;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Times New Roman;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 16px 31px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #cc9f52;
+            position: relative;
+            left: 1300px;
+            top: 60px;
+        }
+        .myButton:hover {
+            background-color: #fb9e25;
+        }
+        .myButton:active {
+            position: relative;
+            top: 59px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <button class="myButton" onclick="myFunction()">Add Shelter</button>
     <h1>My Leaflet Map</h1>
     <div id="map"></div>
 
@@ -39,10 +66,13 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
-
+        
         // Add a marker
         var marker = L.marker([39.952583, -75.165222]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        function openWin() {
+            window.open("youtube.com");
+        }
     </script>
 </body>
 
