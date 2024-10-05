@@ -38,6 +38,8 @@
 </head>
 
 <body>
+    <!-- Button to open a new window with shelter form -->
+
     <button class="myButton" onclick="openWin()">Add Shelter</button>
     <h1>My Leaflet Map</h1>
     <div id="map"></div>
@@ -45,31 +47,37 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+        // Fetch data from a JSON file and add markers to the map based on shelter locations
         fetch('data.json')
             .then(response => response.json()) // Read it as text
             .then(data => {
-                // Loop through each organization in the array
+                // Loop through each shelter in the data
                 data.forEach(shelter => {
                     var lat = shelter.lat;
                     var lon = shelter.lon;
+                    // Create a marker on the map for each shelter
+
                     var marker = L.marker([lat, lon]).addTo(map);
                 });
                     
             
             })
             .catch(error => console.error('Error fetching the CSV file:', error));
-        // Initialize the map
+        // Initialize the Leaflet map with a center point and zoom level
         var map = L.map('map').setView([39.952583, -75.165222], 13); // Set initial position and zoom level
 
-        // Add OpenStreetMap tile layer
+        // Add OpenStreetMap tile layer to the map
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
         
-        // Add a marker
+        // Add a marker at the initial position and bind a popup to it
         var marker = L.marker([39.952583, -75.165222]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+        // Function to open a new window (Google form link) when the button is clicked
+
         function openWin() {
             window.open("https://forms.gle/vnEmvzCWj2J2fVvZ7");
         }
