@@ -89,13 +89,8 @@
                     // Create a marker on the map for each shelter
 
                     var marker = L.marker([lat, lon]).addTo(map);
-                    marker.bindPopup(` <b>Category:</b> ${shelter.Category}<br>
-                                       <b>Name:</b> ${shelter["Organization Name"]}<br>
-                                       <b>Address:</b> ${shelter.Address}<br>
-                                       <b>Days:</b> ${shelter.Days}<br>
-                                       <b>Description:</b> ${shelter.Description}<br>
-                                       <b>Phone Number:</b> ${shelter["Phone Number"]}
-                    `).openPopup();
+                    marker.bindPopup(`Name: ${shelter.Category}`).openPopup();
+                    marker.bindPopup(`Name: ${shelter["Organization Name"]}`).openPopup();
 
                 });
 
