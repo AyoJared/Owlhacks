@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="map.css">
     <title>Button Example</title>
-    <style> 
-        body {
-            background-color: black; /* Set the background color to black */
-            color: white; /* Change text color to white for better contrast */
-        }
+    <style>
         .myButton {
             background-color: #ffc477;
             border-radius: 28px;
@@ -31,17 +27,21 @@
             left: 1300px;
             top: 60px;
         }
+
         .myButton:hover {
             background-color: #fb9e25;
         }
+
         .myButton:active {
             position: relative;
             top: 59px;
         }
 
         #map {
-            height: 600px; /* Adjust the height as needed */
-            width: 100%;   /* Make it take the full width of the page */
+            height: 600px;
+            /* Adjust the height as needed */
+            width: 100%;
+            /* Make it take the full width of the page */
             position: relative;
         }
 
@@ -61,11 +61,11 @@
             text-shadow: 0px 1px 0px #cc9f52;
             text-align: center;  /* Center the text inside the footer */
             padding: 10px 0;  /* Padding for some space inside the footer */
-            width: 15%;  /* Make the footer take the full width of the page */
+            width: 100%;  /* Make the footer take the full width of the page */
             z-index: 10;  /* Ensures it stays on top if necessary */
             position: relative;
-            bottom: 665px;
-            left: 2%;
+            top: 10px;
+            left: 42.5%;
             margin-bottom: 20px;
         }
         .footer:hover {
@@ -73,17 +73,18 @@
         }
         .footer:active {
             position: relative;
-            bottom: 664px;
+            top: 9px;
         }
     </style>
 </head>
 
 <body>
     <!-- Button to open a new window with shelter form -->
-
     <button class="myButton" onclick="openWin()">Add Shelter</button>
     <h1 style="text-align:center;">Homeless Shelter Map</h1>
     <div id="map"></div>
+
+    <button class="footer" onclick="openWindow()">Click Here for Jobs</button>
 
     <button class="footer" onclick="openWindow()">Click Here for Jobs</button>
 
@@ -101,13 +102,19 @@
                     // Create a marker on the map for each shelter
 
                     var marker = L.marker([lat, lon]).addTo(map);
-                    marker.bindPopup(`Name: ${shelter.Category}`).openPopup();
-                    marker.bindPopup(`Name: ${shelter["Organization Name"]}`).openPopup();
+                    marker.bindPopup(` <b>Category:</b> ${shelter.Category}<br>
+                                       <b>Name:</b> ${shelter["Organization Name"]}<br>
+                                       <b>Address:</b> ${shelter.Address}<br>
+                                       <b>Days:</b> ${shelter.Days}<br>
+                                       <b>Description:</b> ${shelter.Description}<br>
+                                       <b>Phone Number:</b> ${shelter["Phone Number"]}
+                    `).openPopup();
 
                 });
+
+
             })
             .catch(error => console.error('Error fetching the CSV file:', error));
-        
         // Initialize the Leaflet map with a center point and zoom level
         var map = L.map('map').setView([39.952583, -75.165222], 13,); // Set initial position and zoom level
 
@@ -116,13 +123,16 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
+        
+        // Add Shelter Button Link
         function openWin() {
             window.open("https://forms.gle/vnEmvzCWj2J2fVvZ7");
         }
+
+        // Jobs button link
         function openWindow() {
             window.open("https://www.welcomehomephilly.org/");            
         }
-
     </script>
     <!-- <div class="footer">All Rights Reserved</div> -->
             
