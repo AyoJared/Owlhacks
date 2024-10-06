@@ -8,23 +8,65 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="map.css">
+    <title>Button Example</title>
+    <style> 
+        .myButton {
+            background-color: #ffc477;
+            border-radius: 28px;
+            border: 1px solid #eeb44f;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Times New Roman;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 16px 31px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #cc9f52;
+            position: relative;
+            left: 1300px;
+            top: 60px;
+        }
+        .myButton:hover {
+            background-color: #fb9e25;
+        }
+        .myButton:active {
+            position: relative;
+            top: 59px;
+        }
+       /* Footer styling */
+        .footer {
+            background-color: #f1f1f1; /* Background color for visibility */
+            text-align: center;  /* Center the text inside the footer */
+            padding: 10px 0;  /* Padding for some space inside the footer */
+            width: 100%;  /* Make the footer take the full width of the page */
+            z-index: 10;  /* Ensures it stays on top if necessary */
+            position: relative;
+        }
+
+    </style>
 </head>
 
 <body>
+    <!-- Button to open a new window with shelter form -->
 
-    <h1>My Leaflet Map</h1>
+    <button class="myButton" onclick="openWin()">Add Shelter</button>
+    <h1 style="text-align:center;">Homeless Shelter Map</p>
     <div id="map"></div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+        // Fetch data from a JSON file and add markers to the map based on shelter locations
         fetch('data.json')
             .then(response => response.json()) // Read it as text
             .then(data => {
-                // Loop through each organization in the array
+                // Loop through each shelter in the data
                 data.forEach(shelter => {
                     var lat = shelter.lat;
                     var lon = shelter.lon;
+                    // Create a marker on the map for each shelter
+
                     var marker = L.marker([lat, lon]).addTo(map);
                     marker.bindPopup(`Name: ${shelter.Category}`).openPopup();
                     marker.bindPopup(`Name: ${shelter["Organization Name"]}`).openPopup();
@@ -34,17 +76,21 @@
             
             })
             .catch(error => console.error('Error fetching the CSV file:', error));
-        // Initialize the map
+        // Initialize the Leaflet map with a center point and zoom level
         var map = L.map('map').setView([39.952583, -75.165222], 13); // Set initial position and zoom level
 
-        // Add OpenStreetMap tile layer
+        // Add OpenStreetMap tile layer to the map
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
         // Add a marker
+        var marker = L.marker([39.952583, -75.165222]).addTo(map);
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     </script>
+            <div class="footer">All Rights Reserved</div>
+            
 </body>
 
 </html>
