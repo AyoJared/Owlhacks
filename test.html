@@ -47,15 +47,23 @@
 
         /* Footer styling */
         .footer {
-            background-color: black; /* Change footer background color to black */
-            color: white; /* Change footer text color to white */
+            background-color: #f1f1f1; /* Background color for visibility */
             text-align: center;  /* Center the text inside the footer */
             padding: 10px 0;  /* Padding for some space inside the footer */
-            width: 100%;  /* Make the footer take the full width of the page */
+            width: 15%;  /* Make the footer take the full width of the page */
             z-index: 10;  /* Ensures it stays on top if necessary */
             position: relative;
+            bottom: 665px;
+            left: 2%;
+            margin-bottom: 20px;
         }
-
+        .footer:hover {
+                background-color: #fb9e25;
+        }
+        .footer:active {
+            position: relative;
+            top: 9px;
+        }
     </style>
 </head>
 
@@ -88,17 +96,8 @@
             .catch(error => console.error('Error fetching the CSV file:', error));
         
         // Initialize the Leaflet map with a center point and zoom level
-        var map = L.map('map').setView([39.952583, -75.165222], 13); // Set initial position and zoom level
+        var map = L.map('map').setView([39.952583, -75.165222], 13,); // Set initial position and zoom level
 
-        // Define the bounding box for Philadelphia (latitude and longitude for southwest and northeast corners)
-        var bounds = [
-            [39.867004, -75.280303],  // Southwest corner (latitude, longitude)
-            [40.137992, -74.955749]   // Northeast corner (latitude, longitude)
-        ];
-
-        // Set the max bounds to restrict map panning to the defined Philadelphia area
-        map.setMaxBounds(bounds);
-        
         // Add OpenStreetMap tile layer to the map
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -107,6 +106,7 @@
 
     </script>
     <div class="footer">All Rights Reserved</div>
+            
 </body>
 
 </html>
