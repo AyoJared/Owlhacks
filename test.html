@@ -47,27 +47,33 @@
 
         /* Footer styling */
         .footer {
-            background-color: #f1f1f1;
-            /* Background color for visibility */
-            text-align: center;
-            /* Center the text inside the footer */
-            padding: 10px 0;
-            /* Padding for some space inside the footer */
-            width: 100%;
-            /* Make the footer take the full width of the page */
-            z-index: 10;
-            /* Ensures it stays on top if necessary */
+            background-color: #f1f1f1; /* Background color for visibility */
+            text-align: center;  /* Center the text inside the footer */
+            padding: 10px 0;  /* Padding for some space inside the footer */
+            width: 100%;  /* Make the footer take the full width of the page */
+            z-index: 10;  /* Ensures it stays on top if necessary */
             position: relative;
+            top: 10px;
+            left: 42.5%;
+            margin-bottom: 20px;
+        }
+        .footer:hover {
+                background-color: #fb9e25;
+        }
+        .footer:active {
+            position: relative;
+            top: 9px;
         }
     </style>
 </head>
 
 <body>
     <!-- Button to open a new window with shelter form -->
-
     <button class="myButton" onclick="openWin()">Add Shelter</button>
     <h1 style="text-align:center;">Homeless Shelter Map</h1>
     <div id="map"></div>
+
+    <button class="footer" onclick="openWindow()">Click Here for Jobs</button>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -105,9 +111,15 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
+        function openWin() {
+            window.open("https://forms.gle/vnEmvzCWj2J2fVvZ7");
+        }
+        function openWindow() {
+            window.open("https://www.welcomehomephilly.org/");            
+        }
     </script>
     <div class="footer">All Rights Reserved</div>
-
+            
 </body>
 
 </html>
