@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="map.css">
     <title>Button Example</title>
-    <style>
+    <style> 
         .myButton {
             background-color: #ffc477;
             border-radius: 28px;
@@ -34,6 +34,16 @@
             position: relative;
             top: 59px;
         }
+       /* Footer styling */
+        .footer {
+            background-color: #f1f1f1; /* Background color for visibility */
+            text-align: center;  /* Center the text inside the footer */
+            padding: 10px 0;  /* Padding for some space inside the footer */
+            width: 100%;  /* Make the footer take the full width of the page */
+            z-index: 10;  /* Ensures it stays on top if necessary */
+            position: relative;
+        }
+
     </style>
 </head>
 
@@ -74,6 +84,8 @@
             window.open("https://forms.gle/vnEmvzCWj2J2fVvZ7");
         }
     </script>
+            <div class="footer">All Rights Reserved</div>
+            
 </body>
 
 </html>

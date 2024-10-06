@@ -1,5 +1,5 @@
 #map {
-    height: 600px; /* Adjust the height as needed */
+    flex-grow: 1; /* Adjust the height as needed */
     width: 100%;    /* Full width */
 }
 
@@ -24,4 +24,10 @@
 .myButton:active {
 	position:relative;
 	top:0;
+}
+.footer { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    z-index: 10;   
 }
