@@ -26,6 +26,9 @@
                     var lat = shelter.lat;
                     var lon = shelter.lon;
                     var marker = L.marker([lat, lon]).addTo(map);
+                    marker.bindPopup(`Name: ${shelter.Category}`).openPopup();
+                    marker.bindPopup(`Name: ${shelter["Organization Name"]}`).openPopup();
+
                 });
                     
             
@@ -41,8 +44,6 @@
         }).addTo(map);
 
         // Add a marker
-        var marker = L.marker([39.952583, -75.165222]).addTo(map);
-        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     </script>
 </body>
 
