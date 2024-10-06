@@ -43,12 +43,33 @@
 
         /* Footer styling */
         .footer {
-            background-color: #f1f1f1; /* Background color for visibility */
+            background-color: #ffc477;
+            border-radius: 28px;
+            border: 1px solid #eeb44f;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Times New Roman;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 16px 31px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #cc9f52;
             text-align: center;  /* Center the text inside the footer */
             padding: 10px 0;  /* Padding for some space inside the footer */
-            width: 100%;  /* Make the footer take the full width of the page */
+            width: 15%;  /* Make the footer take the full width of the page */
             z-index: 10;  /* Ensures it stays on top if necessary */
             position: relative;
+            top: 10px;
+            left: 42.5%;
+            margin-bottom: 20px;
+        }
+        .footer:hover {
+                background-color: #fb9e25;
+        }
+        .footer:active {
+            position: relative;
+            top: 9px;
         }
 
     </style>
@@ -56,10 +77,11 @@
 
 <body>
     <!-- Button to open a new window with shelter form -->
-
     <button class="myButton" onclick="openWin()">Add Shelter</button>
     <h1 style="text-align:center;">Homeless Shelter Map</h1>
     <div id="map"></div>
+
+    <button class="footer" onclick="openWindow()">Click Here for Jobs</button>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -95,8 +117,14 @@
         // Add a marker
         var marker = L.marker([39.952583, -75.165222]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        function openWin() {
+            window.open("https://forms.gle/vnEmvzCWj2J2fVvZ7");
+        }
+        function openWindow() {
+            window.open("https://www.welcomehomephilly.org/");            
+        }
     </script>
-    <div class="footer">All Rights Reserved</div>
+    <!-- <div class="footer">Click Here for Jobs</div> -->
             
 </body>
 
